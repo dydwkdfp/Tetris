@@ -20,13 +20,13 @@ export const StyledTetrisWrapper = styled.div`
 export const StyledTetris = styled.div`
 display: grid;
 width:100%;
-grid-auto-columns: minmax(auto, 1fr);
+grid-auto-columns: 1fr 1fr;
 align-items: center;
-grid-template-areas: ${({imgStart}) => (imgStart ? `'col2 col1'`: `'col1 col2'`)};
-background: #aaa;
+justify-content: center;
+grid-template-areas: 'col1 col2';
 
 @media screen and (max-width: 850px){
-    grid-template-areas: ${({imgStart}) => (imgStart ? `'col1' 'col2'`: `'col1 col1' 'col2 col2'`)};
+    grid-template-areas: 'col1 col1' 'col2 col2';
 }
 `
 
@@ -37,7 +37,6 @@ export const Column1 = styled.div`
     grid-area: col1;
     align-items: center;
     justify-content: flex-end;
-    background: #fff;
 
     
 @media screen and (max-width: 850px){
@@ -52,6 +51,7 @@ padding: 0 15px;
 grid-area: col2;
 align-items: center;
 justify-content: flex-start;
+width: 100%;
 
 @media screen and (max-width: 850px){
     justify-content: center;

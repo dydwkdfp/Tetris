@@ -14,14 +14,23 @@ export const StyledStage = styled.div`
     height:100%;
     max-width: 25vw;
     background: #111;
+    min-width:350px;
+
+    @media screen and (max-width: 1400px){
+        grid-template-rows: repeat(
+            ${props => props.height},
+            calc(350px / ${props => props.width})
+        );
+    }
 
     
     @media screen and (max-width: 850px){
+        margin: 30px;
+        min-width: 350px;
         grid-template-rows: repeat(
             ${props => props.height},
-            calc(25vw / ${props => props.width})
+            calc(350px / ${props => props.width})
         );
-        grid-template-columns: repeat(${props => props.width}, 1fr);
     }
 
 `

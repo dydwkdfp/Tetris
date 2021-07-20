@@ -2,20 +2,22 @@ import styled from 'styled-components';
 import bg from '../../image/bgmenu.jpg';
 
 export const MenuContainer = styled.div`
+width: 100vw;
+height: 100vh;
 background: url(${bg}) #060201;
 background-size: contain;
+background-position:center top;
 background-repeat: no-repeat;
 overflow: hidden;
+    justify-content: flex-end;
 `
 export const MenuWrapper = styled.div`
     display:flex;
-    width: 100vw;
-    height: 100vh;
     margin-right: auto;
     margin-left: auto;
     padding: 24px 24px;
-    justify-content: center;
-    align-items: flex-end;
+    justify-content: flex-end;
+    align-items: center;
 `
 export const MenuDiv = styled.div`
     display: flex;
@@ -27,19 +29,8 @@ export const MenuDiv = styled.div`
     align-items:flex;
     flex-direction: column;
 `
-
-export const MenuH1 = styled.h1`
-    text-transform: uppercase;
-    text-align:center;
-    color:#fff;
-    font-size: 35px;
-
-    @media screen and (max-width:850px){
-        font-size: 33px;    
-    }
-
-    @media screen and (max-width:480px){
-        font-size: 30px;            
-    }
-
+export const MenuTitle = styled.div`
+    width:200px;
+    padding: 24px 24px;
+    text-align: center;
 `
