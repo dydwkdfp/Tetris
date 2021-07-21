@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import bgImage from '../../image/bg.png';
+import bgImage from '../../image/bg.jpeg';
 
 export const StyledTetrisContainer = styled.div`
     background: url(${bgImage}) #000;
@@ -15,6 +15,10 @@ export const StyledTetrisWrapper = styled.div`
     margin-left: auto;
     padding: 0 24px;
     justify-content: center;
+    
+    @media screen and (max-width: 850px){
+        height: 130vh;
+    }
 `
 
 export const StyledTetris = styled.div`
@@ -45,15 +49,37 @@ export const Column1 = styled.div`
 `
 
 export const Column2 = styled.div`
-display:flex;
+display: flex;
 margin-bottom: 15px;
 padding: 0 15px;
 grid-area: col2;
-align-items: center;
 justify-content: flex-start;
-width: 100%;
+flex-direction: column;
 
 @media screen and (max-width: 850px){
     justify-content: center;
+}
+`
+
+export const TetrisDisplayWrapper = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    
+    @media screen and (max-width: 850px){
+        align-items:center;
+    }
+`
+
+export const TetrisButtonWrapper = styled.div`
+display: flex;
+justify-content: flex-start;
+flex-direction: column;
+margin: 40px 0 0 0;
+
+
+@media screen and (max-width: 850px){
+    align-items:center;
 }
 `

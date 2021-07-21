@@ -5,17 +5,18 @@ import { createStage, checkCollision, STAGE_HEIGHT } from '../gameHelper';
 import Stage from './Stage';
 import Display from './Display';
 import Startbutton, {Pausebutton} from './Startbutton';
-import { StyledTetrisWrapper, StyledTetris, StyledTetrisContainer,Column1,Column2 } from './styles/StyledTetris';
+import { StyledTetrisWrapper, StyledTetris, StyledTetrisContainer,Column1,Column2,TetrisDisplayWrapper, TetrisButtonWrapper} from './styles/StyledTetris';
 
 import { usePlayer } from '../hooks/usePlayer';
 import { useStage } from '../hooks/useStage';
 import { TETROMINOS } from '../tetrominos';
 import { useInterval } from '../hooks/useInterval';
 import { useGameStatus } from '../hooks/useGameStatus.js';
-
+ 
 const Tetris = () => {
     const [dropTime, setDropTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
+    const [gameStarted, setGameStarted] = useState(0);
 
     const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
     const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
@@ -32,6 +33,7 @@ const Tetris = () => {
         resetPlayer();
         setGameOver(false);
         setDropTime(1000); 
+        setGameStarted(1);
         setScore(0);
         setRows(0);
         setLevel(0);
@@ -39,12 +41,14 @@ const Tetris = () => {
     }
 
     const stopGame = () =>{
-        if(paused===0){
-            setDropTime(null);
-            setPaused(1);
-        }else{
-            setDropTime(1000/(level+1) + 200);
-            setPaused(0);
+        if(gameStarted===1){
+            if(paused===0){
+                setDropTime(null);
+                setPaused(1);
+            }else{
+                setDropTime(1000/(level+1) + 200);
+                setPaused(0);
+            }
         }
     }
 
@@ -111,19 +115,19 @@ const Tetris = () => {
                <Stage stage={stage}/>
                </Column1>
                <Column2>
-                    <div>
                    {gameOver ? (
                        <Display gameOver={gameOver} text="Game Over"/>
                    ) : (
-                    <div>
+                    <TetrisDisplayWrapper>
                         <Display text={`Score: ${score}`}/>
                        <Display text={`Rows: ${rows}`}/>
                         <Display text={`Level: ${level}`}/>
-                    </div>
+                    </TetrisDisplayWrapper>
                     )}
+                    <TetrisButtonWrapper>
                     <Startbutton callback={startGame}>Start game</Startbutton>
-                    <Pausebutton callback={stopGame}>Pause game</Pausebutton>
-                    </div>
+                    <Pausebutton callback={stopGame} paused={paused}/>
+                    </TetrisButtonWrapper>
                </Column2>
             </StyledTetris>
         </StyledTetrisWrapper>

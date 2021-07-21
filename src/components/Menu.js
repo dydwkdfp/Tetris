@@ -29,7 +29,9 @@ const useStyles = makeStyles({
     },
 })
 
-const Menu = () => {
+const Menu = ({}) => {
+
+
     const classes = useStyles();
     return (
         <MenuContainer>
@@ -46,15 +48,6 @@ const Menu = () => {
                     }}>
                         
                         Game Start!
-                    </motion.button>
-                    </Link>
-                    <Link to="/About">
-                    <motion.button className={classes.button} whileHover={{
-                        scale: 1.1,
-                        textShadow: "0px 0px 8px rgb(255,255,255)",  
-                        boxShadow: "0px 0px 8px rgb(255,255,255)",                         
-                    }}>
-                        About!
                     </motion.button>
                     </Link>
                 </MenuDiv>
