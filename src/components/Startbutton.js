@@ -1,6 +1,7 @@
 import React from 'react';
 import {motion} from 'framer-motion';
 import {makeStyles} from '@material-ui/core/styles';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles({
     button:{
@@ -51,6 +52,21 @@ export const Pausebutton = ({callback, paused}) => {
         }}>
             {paused === 0 ? `Pause Game` : `Resume Game` }
         </motion.button>
+    )
+}
+
+export const Pagebutton = () => {
+    const classes = useStyles();
+    return (
+        <Link to="/MainPage">
+        <motion.button className={classes.button} whileHover={{
+            scale: 1.1,
+            textShadow: "0px 0px 8px rgb(255,255,255)",  
+            boxShadow: "0px 0px 8px rgb(255,255,255)",                         
+        }}>
+            Back to main
+        </motion.button>
+        </Link>
     )
 }
 

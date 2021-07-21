@@ -7,7 +7,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 
 function StartPage(){
   return (
-    <motion.div initial =  {{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+    <motion.div initial =  {{scale: 0.9}} animate={{scale: 1}} exit={{scale: 0.9}}>
       <StarterPage/>
       </motion.div>
   );
@@ -15,7 +15,7 @@ function StartPage(){
 
 function GamePage(){
   return (
-    <motion.div initial =  {{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+    <motion.div initial =  {{scale: 0.9}} animate={{scale: 1}} exit={{scale: 0.9}}>
         <Mainpage/>
     </motion.div>
   );
@@ -24,7 +24,7 @@ function GamePage(){
 function App() {
   const location = useLocation();
   return (
-    <AnimatePresence>
+    <AnimatePresence exitBeforeEnter>
     <Switch location={location} key={location.pathname}>
       <Route path="/StartPage">
         <StartPage />
